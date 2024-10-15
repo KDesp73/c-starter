@@ -108,7 +108,7 @@ help: ## Show this help message
 
 ## Enable verbose output for debugging
 .PHONY: verbose
-verbose: CFLAGS += -DVERBOSE ## Enable verbose output by adding VERBOSE flag
+verbose: CFLAGS += -DVERBOSE
 verbose: all ## Build the project in verbose mode
 
 # Phony targets to avoid conflicts with file names
