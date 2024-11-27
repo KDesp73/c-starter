@@ -88,16 +88,19 @@ dist: $(SRC_FILES) ## Create a tarball of the project
 	mkdir -p $(DIST_DIR)
 	tar -czvf $(DIST_DIR)/$(TARGET)-$(VERSION).tar.gz $(SRC_DIR) $(INCLUDE_DIR) Makefile README.md
 
+## Generate compile_commands.json
 .PHONY: compile_commands.json
 compile_commands.json: $(SRC_FILES) ## Generate compile_commands.json
 	@echo "[INFO] Generating compile_commands.json"
-	bear -- make
+	bear -- make all
 
+## Show this help message
 .PHONY: help
 help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
+## Enable verbose output for debugging
 .PHONY: verbose
 verbose: CFLAGS += -DVERBOSE
 verbose: all ## Build the project in verbose mode
