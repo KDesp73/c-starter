@@ -25,7 +25,7 @@ else
 endif
 
 # Source and object files
-SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+SRC_FILES := $(shell find $(SRC_DIR) -name '*.c')
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 # Default target
